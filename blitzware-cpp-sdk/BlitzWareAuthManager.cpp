@@ -26,7 +26,7 @@ namespace BlitzWareAuth {
         return { true, S_OK, L"Initialized" };
     }
 
-    AuthResult AuthManager::Login(bool useEmbeddedBrowser) {
+    AuthResult AuthManager::Login() {
         m_state = GenerateState();
 
         StartLocalServer();

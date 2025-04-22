@@ -1,13 +1,25 @@
 #pragma once
-#include "BlitzWareAuthTypes.h"
+
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
 #include <winsock2.h>
+#include <windows.h>
 #include <ws2tcpip.h>
+#include <wincred.h>
 #include <sstream>
 #include <string>
-#include <windows.h>
 #include <mutex>
-#include <wincred.h>
 #include <unordered_map>
+#include <shellapi.h>
+
+#include "BlitzWareAuthTypes.h"
+
 #pragma comment(lib, "winhttp.lib")
 #pragma comment(lib, "ws2_32.lib")
 
@@ -17,7 +29,7 @@ namespace BlitzWareAuth {
         static AuthManager& GetInstance();
 
         AuthResult Initialize(const AuthConfig& config);
-        AuthResult Login(bool useEmbeddedBrowser = false);
+        AuthResult Login();
         AuthResult Logout();
         bool IsAuthenticated();
 
